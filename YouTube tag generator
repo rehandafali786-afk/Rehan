@@ -1,1 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Tag Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>YouTube Tag Generator</h1>
+        <button id="theme-toggle">Toggle Dark/Light Mode</button>
+        <div id="tag-input">
+            <input type="text" placeholder="Enter video topic" id="video-topic" />
+            <button id="generate-tags">Generate Tags</button>
+        </div>
+        <div id="suggestions">
+            <h2>Suggested Tags</h2>
+            <ul id="tag-list"></ul>
+        </div>
+        <div id="analytics">
+            <h2>Analytics Dashboard</h2>
+            <p>Analyze your tags and their performance here.</p>
+        </div>
+        <button id="export-btn">Export to CSV</button>
+        <div id="tag-history">
+            <h2>Tag History</h2>
+            <ul id="history-list"></ul>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
 
+/* CSS: styles.css */
+body {
+    font-family: Arial, sans-serif;
+    transition: background-color 0.5s;
+}
+.container {
+    padding: 20px;
+}
+#tag-input {
+    margin: 10px 0;
+}
+#suggestions, #analytics, #tag-history {
+    margin-top: 20px;
+}
+.dark-mode {
+    background-color: #121212;
+    color: white;
+}
+
+/* JavaScript: script.js */
+document.getElementById('theme-toggle').onclick = function() {
+    document.body.classList.toggle('dark-mode');
+};
+
+document.getElementById('generate-tags').onclick = function() {
+    const topic = document.getElementById('video-topic').value;
+    const tags = generateTags(topic);
+    displayTags(tags);
+};
+
+function generateTags(topic) {
+    // Placeholder for AI-powered tag generation logic
+    return [topic + ' tutorial', topic + ' tips', 'trending ' + topic];
+}
+
+function displayTags(tags) {
+    const tagList = document.getElementById('tag-list');
+    tagList.innerHTML = '';
+    tags.forEach(tag => {
+        const li = document.createElement('li');
+        li.textContent = tag;
+        tagList.appendChild(li);
+    });
+};
